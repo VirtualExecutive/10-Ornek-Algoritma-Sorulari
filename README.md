@@ -1,10 +1,12 @@
 # 10-Ornek-Algoritma-Sorulari
+
 10 tane örnek algoritma sorusu bulunuyor. Sorularının çözümü olarak akış şemaları ve Java kodlarını yazdım. Anlatımı olarak Youtube linkini bıraktım.
+
 ----
 Youtube video link: [Open]() Null
-
 ---
 1-) Kullanıcı tarafından girilen sayının çift yada tek olduğunu ekrana yazdıran algoritma akış şemasını çizin ve java kodunu yazınız.
+
 
 
 2-) 1'den 100'e kadar rastgele sayı oluşturup 10 defa ekrana yazdıran algoritma akış şemasını çizin ve java kodunu yazınız.
@@ -49,4 +51,5 @@ Not: 1)2 , 2)1-2 , 3)2-1 , 4)2-2 koltuk diziliminin numarasına göre seçtirini
 
 
 10-) Resimdeki 0 1 haritasının sınırlardaki 1'e dikey veya yatay şeklinde komşu olan 1'lere dikey veya yatay birbirlerine bağlı olmayan 1'leri 0'a çevirip 0 1 haritasını matrix şeklinde ekrana yazdıran algoritma akış şemasını çizin ve java kodunu ekrana yazınız.
+
 Not: sınırlardaki 1'ler 0'a çevirilmeyecek.
