@@ -6,7 +6,7 @@
 Youtube video link: [Open]() Null
 ---
 1-) Kullanıcı tarafından girilen sayının çift yada tek olduğunu ekrana yazdıran algoritma akış şemasını çizin ve java kodunu yazınız.
-
+[İncele](https://github.com/yusufYAZICI155/10-Ornek-Algoritma-Sorulari/blob/main/Soru1.md)
 
 
 2-) 1'den 100'e kadar rastgele sayı oluşturup 10 defa ekrana yazdıran algoritma akış şemasını çizin ve java kodunu yazınız.
