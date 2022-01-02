@@ -6,7 +6,10 @@
 
 ---
 ## Akış Şeması
-![image](https://user-images.githubusercontent.com/63202456/147882415-7484ce44-b7ef-407c-b2da-fde848396973.png)
+![image](https://user-images.githubusercontent.com/63202456/147883400-bd61397a-45e8-4f9d-b3f8-314c8bb46fbf.png)
 
 
+---
+
+## [Java Kodu](https://github.com/yusufYAZICI155/10-Ornek-Algoritma-Sorulari/blob/main/Soru1/src/soru1/Soru1.java)
 
