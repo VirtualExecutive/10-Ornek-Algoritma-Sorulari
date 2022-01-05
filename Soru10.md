@@ -1,51 +1,68 @@
-# Algoritma Sorusu 1
-> Soru - 1
+# Algoritma Sorusu 10
+> Soru - 10
 > 
-> Kullanıcı tarafından girilen sayının çift yada tek olduğunu ekrana yazdıran algoritma akış şemasını çizin ve java kodunu yazınız.
+> ![image](https://user-images.githubusercontent.com/63202456/148206592-232be93c-568c-4645-8091-216c316a251c.png)
+> 
+> Yukarıdaki 0 1 haritasının sınırlardaki 1'e dikey veya yatay şeklinde komşu olan 1'lere dikey veya yatay birbirlerine bağlı olmayan 1'leri 0'a çevirip 0 1 haritasını matrix şeklinde ekrana yazdıran algoritma akış şemasını çizin ve java kodunu ekrana yazınız.
+> 
+> Not: sınırlardaki 1'ler 0'a çevirilmeyecek.
 >  
 
----
-## Akış Şeması
-![image](https://user-images.githubusercontent.com/63202456/147883400-bd61397a-45e8-4f9d-b3f8-314c8bb46fbf.png)
-
 
 ---
 
-## [Java Kodu](https://github.com/yusufYAZICI155/10-Ornek-Algoritma-Sorulari/blob/main/Soru1/src/soru1/Soru1.java)
+## [Java Kodu](https://github.com/yusufYAZICI155/10-Ornek-Algoritma-Sorulari/blob/main/Soru10/src/soru10/Soru10.java)
 
 ```java
-package soru1;
-import java.util.Scanner;
-public class Soru1 {
+package soru10;
+public class Soru10 {
     public static void main(String[] args) {
-        // Ekrana "Bir sayı giriniz: " yazdır.
-        System.out.print("Bir sayı giriniz: ");
-        
-        // input değişkeni adında Scanner tipini çağır.
-        Scanner input = new Scanner(System.in);
-        // "Scanner input" ile int tipindeki klavye girdisini "sayi"ya ata.
-        int sayi = input.nextInt();
-        
-        // "sayi" değişkeninin değeri 2'ye bölümünden kalanı 0 ise "çift" değil ise "tek" olarak "sonuc" ata.
-        String sonuc=(sayi%2==0)? "çift":"tek";
-        
-        // Ekrana sonucu yazdır.
-        System.out.println("Girdiğiniz sayı " + sayi + " " + sonuc + " sayıdır.");
-    }
-}
-```
+        int map[][]={{0,0,1,0,0,1},{1,1,1,1,0,0},{1,0,1,0,1,0},{0,0,1,0,0,1},{1,1,0,1,0,1},{0,1,0,0,0,0}};
+        int maxX=map[0].length;
+        int maxY=map.length;
+        int verifiedMap[][]= new int[maxY][maxX];
+        for(int y=0;y<maxY;y+=maxY-1){
+            for(int x=0;x<maxX;x++){
+                if(map[y][x]==1) verifiedMap[y][x]=1;
+            }
+        }
+        for(int x=0;x<maxX;x+=maxX-1){
+            for(int y=0;y<maxY;y++){
+                if(map[y][x]==1) verifiedMap[y][x]=1;
+            }
+        }
+        String verifiedMapNew = "";
+        String verifiedMapOld = "";
+        for(int y=0;y<maxY;y++){
+            for(int x=0;x<maxX;x++){
+                verifiedMapNew+=verifiedMap[y][x]+" ";
+            }
+            verifiedMapNew+="\n";
+        }
+        while(!verifiedMapOld.equals(verifiedMapNew)) {
+            verifiedMapOld=verifiedMapNew;
+            verifiedMapNew="";
+            for (int y = 0; y < maxY; y++) {
+                for (int x = 0; x < maxX; x++) {
+                    if (0 < y && y < maxY - 1 && 0 < x && x < maxX - 1) {
+                        if (map[y][x] == 1) {
+                            if      (verifiedMap[y][x+1]==1) verifiedMap[y][x]=1;
+                            else if (verifiedMap[y][x-1]==1) verifiedMap[y][x]=1;
+                            else if (verifiedMap[y+1][x]==1) verifiedMap[y][x]=1;
+                            else if (verifiedMap[y-1][x]==1) verifiedMap[y][x]=1;
+                        }
+                    }
+                }
+            }
+            for(int y=0;y<maxY;y++){
+                for(int x=0;x<maxX;x++){
+                    verifiedMapNew+=verifiedMap[y][x]+" ";
+                }
+                verifiedMapNew+="\n";
+            }
 
-Yorumsuz satırlarla kod
-```java
-package soru1;
-import java.util.Scanner;
-public class Soru1 {
-    public static void main(String[] args) {
-        System.out.print("Bir sayı giriniz: ");
-        Scanner input = new Scanner(System.in);
-        int sayi = input.nextInt();
-        String sonuc=(sayi%2==0)? "çift":"tek";
-        System.out.println("Girdiğiniz sayı " + sayi + " " + sonuc + " sayıdır.");
+        }
+        System.out.print(verifiedMapNew);
     }
 }
 ```
