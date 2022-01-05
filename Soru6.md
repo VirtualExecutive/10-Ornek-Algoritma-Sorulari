@@ -1,59 +1,67 @@
-# Algoritma Sorusu 2
-> Soru - 2
+# Algoritma Sorusu 6
+> Soru - 6
 > 
-> 1'den 100'e kadar rastgele sayı oluşturup 10 defa ekrana yazdıran algoritma akış şemasını çizin ve java kodunu yazınız.
+> Kullanıcı tarafından girilen şifrenin çok zayıf, zayıf, iyi, güçlü , çok güçlü gibi hesaplayan algoritma akış şeması ve java kodunu yazınız.
+> 
+> İPUCU: şifrenin 5 ten kısa olmaması, en az 1 rakam kullanılması, en az 1 küçük harf ve en az 1 büyük harf, en az 1 karakter
 >  
 
 ---
 ## Akış Şeması
-![image](https://user-images.githubusercontent.com/63202456/147885803-9ce55f97-5808-46c3-a657-86dd565d6b85.png)
+![image](https://user-images.githubusercontent.com/63202456/148202563-269f24ff-cfc0-4b34-8fe5-0f4cbc2634fd.png)
+![image](https://user-images.githubusercontent.com/63202456/148202628-08ea6455-0c37-4afd-9000-b773d0003343.png)
+![image](https://user-images.githubusercontent.com/63202456/148202686-8a78db07-9425-45d1-9b14-00d8056a82dc.png)
+
 
  
 ---
 
-## [Java Kodu](https://github.com/yusufYAZICI155/10-Ornek-Algoritma-Sorulari/blob/main/Soru2/src/soru2/Soru2.java)
+## [Java Kodu](https://github.com/yusufYAZICI155/10-Ornek-Algoritma-Sorulari/blob/main/Soru6/src/soru6/Soru6.java)
 
 ```java
 
-package soru2;
-public class Soru2 {
+package soru6;
+import java.util.Scanner;
+public class Soru6 {
     public static void main(String[] args) {
-        int sayi1 = 1;      //başlangıç sayısını "sayi1"e ata.
-        int sayi2 = 100;    //bitiş sayısını "sayi2"e ata.
-        int random;         //"random" değişkenin tiğini int olarak belirle.
-        int i=0;            //"i" değişkenini.
-        while(i<10){        //"i"nin değeri 10'dan küçük olduğu sürece tekrarla.
-            //Math.random() double olarak 0 ila 1 arasında sayı ürettiği için
-            //çarpılan sayı kadar sayı çıkar.
-            random = (int) (Math.random()*(sayi2-1));
-            // başlangıç sayısını ayarla.
-            random+=sayi1;
-            // Ekrana "random" yazdır.
-            System.out.println(random);
-            i++;
+        System.out.print("Şifrenizi girin: ");
+        Scanner input = new Scanner(System.in);
+        int passwordStrength=0;
+        String password = input.nextLine();
+        String lowerAlphabet ="abcdefghijklmnoprstuvyzxqw";
+        for (String i: lowerAlphabet.split("")){
+            if (password.contains(i)){
+                passwordStrength++;
+                break;
+            }
         }
+        String upperAlphabet ="ABCDEFGHIJKLMNOPRSTUVYZXQW";
+        for (String i: upperAlphabet.split("")){
+            if (password.contains(i)){
+                passwordStrength++;
+                break;
+            }
+        }
+        String numbers = "0123456789";
+        for (String i: numbers.split("")){
+            if (password.contains(i)){
+                passwordStrength++;
+                break;
+            }
+        }
+        String characters = "-_*?}][{)(=/&%+^'!é,.;:";
+        for (String i: characters.split("")){
+            if (password.contains(i)){
+                passwordStrength++;
+                break;
+            }
+        }
+        if (password.length()>5) passwordStrength++;
+        System.out.println("Şifre gücünüz: "+passwordStrength);
+        
     }
+    
 }
 
 ```
 
-Yorumsuz satırlarla kod
-```java
-
-package soru2;
-public class Soru2 {
-    public static void main(String[] args) {
-        int sayi1 = 1;      
-        int sayi2 = 100;    
-        int random;         
-        int i=0;            
-        while(i<10){        
-            random = (int) (Math.random()*(sayi2-1));
-            random+=sayi1;
-            System.out.println(random);
-            i++;
-        }
-    }
-}
-
-```
