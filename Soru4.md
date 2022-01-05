@@ -1,59 +1,106 @@
-# Algoritma Sorusu 2
-> Soru - 2
+# Algoritma Sorusu 4
+> Soru - 4
 > 
-> 1'den 100'e kadar rastgele sayı oluşturup 10 defa ekrana yazdıran algoritma akış şemasını çizin ve java kodunu yazınız.
+> Kullanıcıdan kilo ve boy verilerini alarak zayıf, sağlıklı, kilolu, şişman, aşırı şişman şeklinde 
+>beden kitle indeksini hesaplayıp sonucunu ekrana yazdıran algoritma akış şemasını çizin ve java kodunu yazınız.
+>
+>NOT:BKİ = kilo/boy'un metre cinsinden karesi
+>
+>0-20		Zayıf
+>
+>20-25		Sağlıklı
+>
+>25-30		Kilolu
+>
+>30-40		Şişman
+>
+>40-60		Aşırı Şişman
 >  
 
 ---
 ## Akış Şeması
-![image](https://user-images.githubusercontent.com/63202456/147885803-9ce55f97-5808-46c3-a657-86dd565d6b85.png)
+![image](https://user-images.githubusercontent.com/63202456/148198108-2740b148-c285-46de-b408-fd69283bf597.png)
+![image](https://user-images.githubusercontent.com/63202456/148198158-de1bced4-b575-4062-b2f7-8fc6f1df7b1f.png)
+
 
  
 ---
 
-## [Java Kodu](https://github.com/yusufYAZICI155/10-Ornek-Algoritma-Sorulari/blob/main/Soru2/src/soru2/Soru2.java)
+## [Java Kodu](https://github.com/yusufYAZICI155/10-Ornek-Algoritma-Sorulari/blob/main/Soru4/src/soru4/Soru4.java)
 
 ```java
 
-package soru2;
-public class Soru2 {
-    public static void main(String[] args) {
-        int sayi1 = 1;      //başlangıç sayısını "sayi1"e ata.
-        int sayi2 = 100;    //bitiş sayısını "sayi2"e ata.
-        int random;         //"random" değişkenin tiğini int olarak belirle.
-        int i=0;            //"i" değişkenini.
-        while(i<10){        //"i"nin değeri 10'dan küçük olduğu sürece tekrarla.
-            //Math.random() double olarak 0 ila 1 arasında sayı ürettiği için
-            //çarpılan sayı kadar sayı çıkar.
-            random = (int) (Math.random()*(sayi2-1));
-            // başlangıç sayısını ayarla.
-            random+=sayi1;
-            // Ekrana "random" yazdır.
-            System.out.println(random);
-            i++;
-        }
-    }
-}
+package soru4;
 
+import java.util.Scanner;
+
+public class Soru4 {
+    public static void main(String[] args) {
+        //Kullanıcıdan kilo ve boy iste
+        System.out.print("Kilo ve cm cinsinden boyunuzu girin: ");
+        Scanner input = new Scanner(System.in);
+        int kilo = input.nextInt();
+        double boy = input.nextDouble();
+        boy/=100; //cm cinsinden girilen boyunu metreye çevir.
+        double BKI = kilo/(Math.pow(boy,2));  //vucüt kitle endeksini hesapla
+        String humanState;
+        if(BKI<=20){
+            humanState="Zayıf";
+        }
+        else if(BKI<=25){
+            humanState="Normal";
+        }
+        else if(BKI<=30){
+            humanState="Kilolu";
+        }
+        else if(BKI<=40){
+            humanState="Şişman";
+        }
+        else{
+            humanState="Aşırı Şişman";
+        }
+        System.out.println(humanState+" \nBKI: "+BKI);
+        
+    }
+    
+}
 ```
 
 Yorumsuz satırlarla kod
 ```java
 
-package soru2;
-public class Soru2 {
+package soru4;
+
+import java.util.Scanner;
+
+public class Soru4 {
     public static void main(String[] args) {
-        int sayi1 = 1;      
-        int sayi2 = 100;    
-        int random;         
-        int i=0;            
-        while(i<10){        
-            random = (int) (Math.random()*(sayi2-1));
-            random+=sayi1;
-            System.out.println(random);
-            i++;
+        System.out.print("Kilo ve cm cinsinden boyunuzu girin: ");
+        Scanner input = new Scanner(System.in);
+        int kilo = input.nextInt();
+        double boy = input.nextDouble();
+        boy/=100;
+        double BKI = kilo/(Math.pow(boy,2)); 
+        String humanState;
+        if(BKI<=20){
+            humanState="Zayıf";
         }
+        else if(BKI<=25){
+            humanState="Normal";
+        }
+        else if(BKI<=30){
+            humanState="Kilolu";
+        }
+        else if(BKI<=40){
+            humanState="Şişman";
+        }
+        else{
+            humanState="Aşırı Şişman";
+        }
+        System.out.println(humanState+" \nBKI: "+BKI);
+        
     }
+    
 }
 
 ```
