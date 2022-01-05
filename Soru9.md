@@ -1,51 +1,83 @@
-# Algoritma Sorusu 1
-> Soru - 1
+# Algoritma Sorusu 9
+> Soru - 9
 > 
-> Kullanıcı tarafından girilen sayının çift yada tek olduğunu ekrana yazdıran algoritma akış şemasını çizin ve java kodunu yazınız.
+> Sadece önden giriş çıkış kapısı olan bir otobüs muavini, ekrandaki numaralılandırılmış koltuk diziliminin numarasını, otobüsün kaç sıra koltuktan oluştuğunu, en arkadaki koltuk sırasının kaç koltuğu olduğunu, erkeklerin oturduğu koltuk numaralarını ve kızların oturduğu koltuk numaralarını girdikten sonra matrix şeklinde boş koltuklar "B" erkeklerin oturduğu koltuklar "E" kadınların oturduğu
+koltuklar "K" koltuk diziliminde tireli kısımlar boşluk olacak şekilde ekrana yazdıran akış şeması ve java kodunu yazınız.
+> 
+> Not: 1)0-2 , 2)1-2 , 3)2-1 , 4)2-2 , 5)2-0 
+> 
+> koltuk diziliminin numarasına göre seçtiriniz.
 >  
 
----
-## Akış Şeması
-![image](https://user-images.githubusercontent.com/63202456/147883400-bd61397a-45e8-4f9d-b3f8-314c8bb46fbf.png)
-
 
 ---
 
-## [Java Kodu](https://github.com/yusufYAZICI155/10-Ornek-Algoritma-Sorulari/blob/main/Soru1/src/soru1/Soru1.java)
+## [Java Kodu](https://github.com/yusufYAZICI155/10-Ornek-Algoritma-Sorulari/blob/main/Soru9/src/soru9/Soru9.java)
 
 ```java
-package soru1;
+package soru9;
 import java.util.Scanner;
-public class Soru1 {
+public class Soru9 {
     public static void main(String[] args) {
-        // Ekrana "Bir sayı giriniz: " yazdır.
-        System.out.print("Bir sayı giriniz: ");
-        
-        // input değişkeni adında Scanner tipini çağır.
         Scanner input = new Scanner(System.in);
-        // "Scanner input" ile int tipindeki klavye girdisini "sayi"ya ata.
-        int sayi = input.nextInt();
-        
-        // "sayi" değişkeninin değeri 2'ye bölümünden kalanı 0 ise "çift" değil ise "tek" olarak "sonuc" ata.
-        String sonuc=(sayi%2==0)? "çift":"tek";
-        
-        // Ekrana sonucu yazdır.
-        System.out.println("Girdiğiniz sayı " + sayi + " " + sonuc + " sayıdır.");
+        System.out.print("\n1)0-2\n2)1-2\n3)2-1\n4)2-2\n5)2-0\nYukarıdaki numaralandırılmış koltuk diziliminizi seçin: ");
+        int dizilim = input.nextInt();
+        System.out.print("\nOtobüs kaç sıradan oluşuyor?(Arka sıra dahil): ");
+        int sira = input.nextInt() - 1;
+        System.out.print("\nArkadaki koltuk sayısı kaç?: ");
+        int arkaSira = input.nextInt();
+        System.out.print("\nErkeklerin oturduğu koltuk numaralarını arasında boşluk olacak şeklinde yazın: ");
+        Scanner input2= new Scanner(System.in);
+        String erkekNo = input2.nextLine();
+        System.out.print("\nKızların oturduğu koltuk numaralarını arasında boşluk olacak şeklinde yazın: ");
+        String kizNo = input2.nextLine();
+        int koltukSayisi = sira*((dizilim==1||dizilim==5)?2:((dizilim==2||dizilim==3)?3:4))+arkaSira;
+        String koltukSira[] = new String[koltukSayisi];
+        for(String i: erkekNo.split(" ")){
+            koltukSira[Integer.parseInt(i)-1] = "E";
+        }
+        for(String i: kizNo.split(" ")){
+            koltukSira[Integer.parseInt(i)-1] = "K";
+        }
+        for(int i=0;i<koltukSira.length;i++){
+            if(koltukSira[i]==null){
+                koltukSira[i]="B";
+            }
+        }
+        int genislik=arkaSira;
+        int koltukno=0;
+        if (dizilim==1){
+            for(int i=0;i<sira;i++){
+                System.out.printf("%"+genislik+"s\n",(koltukSira[koltukno++]+koltukSira[koltukno++]));
+            }
+        }
+        else if(dizilim==2){
+            for(int i=0;i<sira;i++){
+                System.out.printf(koltukSira[koltukno++]+"%"+(genislik-1)+"s\n",(koltukSira[koltukno++]+koltukSira[koltukno++]));
+            }
+        }
+        else if(dizilim==3){
+            for(int i=0;i<sira;i++){
+                System.out.printf(koltukSira[koltukno++]+koltukSira[koltukno++]+"%"+(genislik-2)+"s\n",koltukSira[koltukno++]);
+            }
+        }
+        else if(dizilim==4){
+            for(int i=0;i<sira;i++){
+                System.out.printf(koltukSira[koltukno++]+koltukSira[koltukno++]+"%"+(genislik-2)+"s\n",(koltukSira[koltukno++]+koltukSira[koltukno++]));
+            }
+        }
+        else if(dizilim==5){
+            for(int i=0;i<sira;i++){
+                System.out.printf(koltukSira[koltukno++]+koltukSira[koltukno++]+"\n");
+            }
+        }
+        String arkaSira2="";
+        for(int i=koltukno;i<koltukSayisi;i++){
+            arkaSira2=arkaSira2+koltukSira[koltukno++];
+        }
+        System.out.printf("%"+genislik+"s\n",arkaSira2);
     }
+    
 }
 ```
 
-Yorumsuz satırlarla kod
-```java
-package soru1;
-import java.util.Scanner;
-public class Soru1 {
-    public static void main(String[] args) {
-        System.out.print("Bir sayı giriniz: ");
-        Scanner input = new Scanner(System.in);
-        int sayi = input.nextInt();
-        String sonuc=(sayi%2==0)? "çift":"tek";
-        System.out.println("Girdiğiniz sayı " + sayi + " " + sonuc + " sayıdır.");
-    }
-}
-```
