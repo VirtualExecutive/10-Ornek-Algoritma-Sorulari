@@ -1,38 +1,47 @@
-# Algoritma Sorusu 2
-> Soru - 2
+# Algoritma Sorusu 5
+> Soru - 5
 > 
-> 1'den 100'e kadar rastgele sayı oluşturup 10 defa ekrana yazdıran algoritma akış şemasını çizin ve java kodunu yazınız.
+> Kullanıcı tarafından girilen cümlenin, kullanıcı tarafından girilen harf, hece veya kelimenin yerlerine yine kullanıcı tarafından girilen harf, hece veya kelime ile 
+> değiştirilip değiştirilen cümleyi ve kaç defa değiştirildiğini ekrana yazdıran algoritma akış şemasını ve java kodunu yazınız.
 >  
 
 ---
 ## Akış Şeması
-![image](https://user-images.githubusercontent.com/63202456/147885803-9ce55f97-5808-46c3-a657-86dd565d6b85.png)
+![image](https://user-images.githubusercontent.com/63202456/148199081-3753baa7-9db9-4dbe-ac85-37b461e4f542.png)
+![image](https://user-images.githubusercontent.com/63202456/148199160-93d6ec78-3658-4b2e-ab63-20a403f421af.png)
 
  
 ---
 
-## [Java Kodu](https://github.com/yusufYAZICI155/10-Ornek-Algoritma-Sorulari/blob/main/Soru2/src/soru2/Soru2.java)
+## [Java Kodu](https://github.com/yusufYAZICI155/10-Ornek-Algoritma-Sorulari/blob/main/Soru5/src/soru5/Soru5.java)
 
 ```java
 
-package soru2;
-public class Soru2 {
+package soru5;
+
+import java.util.Scanner;
+
+public class Soru5 {
     public static void main(String[] args) {
-        int sayi1 = 1;      //başlangıç sayısını "sayi1"e ata.
-        int sayi2 = 100;    //bitiş sayısını "sayi2"e ata.
-        int random;         //"random" değişkenin tiğini int olarak belirle.
-        int i=0;            //"i" değişkenini.
-        while(i<10){        //"i"nin değeri 10'dan küçük olduğu sürece tekrarla.
-            //Math.random() double olarak 0 ila 1 arasında sayı ürettiği için
-            //çarpılan sayı kadar sayı çıkar.
-            random = (int) (Math.random()*(sayi2-1));
-            // başlangıç sayısını ayarla.
-            random+=sayi1;
-            // Ekrana "random" yazdır.
-            System.out.println(random);
-            i++;
+        // Ekrana "Bir cümle giriniz" yazdır.
+        System.out.println("Bir cümle giriniz:");
+        Scanner input = new Scanner(System.in);
+        String text = input.nextLine();
+        // Değiştirmesini istediği kısımlarını girmesini istiyoruz.
+        System.out.println("Değiştirilmesini istediğiniz harf, hece veya kelimeyi girin: ");
+        String changeOld = input.nextLine();
+        // Değiştirlecek olan yazının yerine geçecek yazının girmesini istiyoruz.
+        System.out.println("Değiştirilecek yerlerine harf, hece veya kelimeyi girin: ");
+        String changeNew = input.nextLine();
+        int sayac=0;
+        while(text.contains(changeOld)==true){
+            //değiştirilecek ilk kısmını değiştir.
+            text=text.replaceFirst(changeOld,changeNew);
+            sayac++;
         }
+        System.out.println("Yeni yazınız:\n"+text+"\n\nBilgi: Yazının üzerinde "+sayac+" defa değişiklik yapıldı.");
     }
+    
 }
 
 ```
@@ -40,20 +49,27 @@ public class Soru2 {
 Yorumsuz satırlarla kod
 ```java
 
-package soru2;
-public class Soru2 {
+package soru5;
+
+import java.util.Scanner;
+
+public class Soru5 {
     public static void main(String[] args) {
-        int sayi1 = 1;      
-        int sayi2 = 100;    
-        int random;         
-        int i=0;            
-        while(i<10){        
-            random = (int) (Math.random()*(sayi2-1));
-            random+=sayi1;
-            System.out.println(random);
-            i++;
+        System.out.println("Bir cümle giriniz:");
+        Scanner input = new Scanner(System.in);
+        String text = input.nextLine();
+        System.out.println("Değiştirilmesini istediğiniz harf, hece veya kelimeyi girin: ");
+        String changeOld = input.nextLine();
+        System.out.println("Değiştirilecek yerlerine harf, hece veya kelimeyi girin: ");
+        String changeNew = input.nextLine();
+        int sayac=0;
+        while(text.contains(changeOld)==true){
+            text=text.replaceFirst(changeOld,changeNew);
+            sayac++;
         }
+        System.out.println("Yeni yazınız:\n"+text+"\n\nBilgi: Yazının üzerinde "+sayac+" defa değişiklik yapıldı.");
     }
+    
 }
 
 ```
