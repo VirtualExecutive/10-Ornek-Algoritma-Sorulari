@@ -3,7 +3,7 @@
 10 tane örnek algoritma sorusu bulunuyor. Sorularının çözümü olarak akış şemaları ve Java kodlarını yazdım. Anlatımı olarak Youtube linkini bıraktım.
 
 ----
-## Youtube video link: [Open]() Null
+## Youtube video link: [İzle](https://www.youtube.com/watch?v=PwRME46icF4) 
 
 ---
 
